@@ -1,6 +1,6 @@
-# Decentralized-Video-revenue-Distribution
+# Frame-flow
 
-**1 项目名称**: Decentralized-Video-revenue-Distribution
+**1 项目名称**: frame-flow
 
 **2 项目图片**:
 
@@ -16,26 +16,8 @@
 2. 用户通过 App 观看视频产生流量的同时，会触发 App 的 sdk 来检测用户行为并向 Gate 发起请求，此时 Gate 会构建一笔 mint 交易 将 token 以 一定的比例发给创造者和视频平台， 并对这笔交易签名之后发送给视频平台，平台会检查这笔交易是否正确，验证通过之后 会将 视频流 推给用户 ，之后视频平台可以随时将该笔交易发送到链上来获取 token
 3. 创作者和平台拥有 token 之后，可以将 token 卖给广告商，广告商有了 token 之后就可以在 App 中发布广告，当用户浏览到广告之后，也会向 gate 发起请求，此时 Gate 就会 burn 掉广告商一定量的 token
 
-**4 队长和队员**:
-
-队长: [@NavaFee](https://github.com/NavaFee) 队友：[@trenlinhuang](https://github.com/trenlinhuang)
-**5 本项目在这次黑客松的目标:**
-
-目标：
-
-1. 构建一个不再是一些 DeFi 类型的零和游戏项目，可以实现三方共赢的全新 idea！
-2. 完成一个 mvp，实现项目的基本功能，制作一个完整的 Demo。
-
-**6 视频链接:**
-
-- [YouTube](https://youtu.be/pqs76fcAOUs) length: 2m45s
-
-**7 项目 github repo 链接:**
+**4 项目 github repo 链接:**
 
 所有代码都在
 
-- [Github repo](https://github.com/NavaFee/Decentralized-Video-revenue-Distribution)
-
-**8 是否基于之前的项目:**
-
-该项目是本次 hackathon 期间，从 0 到 1 开发的项目，完全原创。
+- [Github repo](https://github.com/frame-flow/frame-flow)
