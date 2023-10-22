@@ -1,7 +1,10 @@
 import Link from "next/link"
 import Header from "../components/Header"
-import { useState } from "react"
-import { useNotification } from "web3uikit"
+import { useEffect, useState } from "react"
+import { useNotification, Modal } from "web3uikit"
+
+import { NftCard } from "@web3uikit/core"
+
 import { ethers } from "ethers"
 import { useMoralis } from "react-moralis"
 import networkMapping from "../constants/networkMapping.json"
@@ -18,6 +21,12 @@ function UploadPage() {
     const { account } = useMoralis()
     const dispatch = useNotification()
     const [videoTitle, setVideoTitle] = useState("")
+
+    // NFT info 
+    const [isVisible,setIsVisible] = useState(false)
+    const [minterAddress,setMinterAddress] = useState("");
+
+
     const onUploadfile = async (event) => {
         event.preventDefault()
 
@@ -52,6 +61,7 @@ function UploadPage() {
         const platform = accounts["scroll"][1]
         const advertiser = accounts["scroll"][2]
         const user1_address = accounts["scroll"][3]
+        setMinterAddress(user1_address);
         const user2_address = accounts["scroll"][4]
         const user3_address = accounts["scroll"][5]
         console.log("platform", platform)
@@ -72,83 +82,121 @@ function UploadPage() {
             title: "Upload successful",
             position: "topR",
         })
+        setIsVisible(true)
     }
+
     function reflect(address) {
         const str1 = address.slice(0, 6)
         const str2 = address.slice(-6)
         return str1 + "..." + str2
     }
 
-    return (
-        <div className="container mx-auto p-4">
-            <Header />
+return (
+    <div className="container mx-auto p-4">
+        <Header />
 
-            <br />
+        <br />
 
-            <form onSubmit={onUploadfile} encType="multipart/form-data">
-                <div className="mb-4">
-                    <label htmlFor="title" className="font-bold">
-                        视频标题
-                    </label>
-                    <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        value={videoTitle}
-                        onChange={(e) => setVideoTitle(e.target.value)}
-                        className="border rounded p-2"
-                    />
-                </div>
 
-                <div className="mb-4 flex items-center">
-                    <label htmlFor="video" className="font-bold">
-                        上传视频
-                    </label>
-                    <input
-                        type="file"
-                        id="video"
-                        name="file"
-                        className="border rounded p-2 ml-2"
-                    />
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                    >
-                        上传视频
-                    </button>
-                </div>
-            </form>
+        <form onSubmit={onUploadfile} encType="multipart/form-data">
+            <div className="mb-4">
+                <label htmlFor="title" className="font-normal text-2xl">
+                    视频标题
+                </label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={videoTitle}
+                    onChange={(e) => setVideoTitle(e.target.value)}
+                    className="border rounded p-2 ml-2 w-1/3 h-10"
+                />
+            </div>
 
-            <br />
+            <div className="mt-10 mb-4 flex items-center">
+                <label htmlFor="video" className="font-normal text-2xl ">
+                    上传视频
+                </label>
+                <input
+                    type="file"
+                    id="video"
+                    name="file"
+                    className="border rounded p-2 ml-2 w-1/3 h-15"
+                />
+                <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                >
+                    上传视频
+                </button>
+            </div>
+        </form>
 
-            <form onSubmit={onUploadimg} encType="multipart/form-data">
-                <div className="mb-4 flex items-center">
-                    <label htmlFor="cover" className="font-bold">
-                        上传封面
-                    </label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        id="cover"
-                        name="image"
-                        className="border rounded p-2 ml-2"
-                    />
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                    >
-                        上传封面
-                    </button>
-                </div>
-            </form>
+        <br />
 
-            <br />
+        <form onSubmit={onUploadimg} encType="multipart/form-data">
+            <div className="mt-5 mb-4 flex items-center">
+                <label htmlFor="cover" className="font-normal text-2xl">
+                    上传封面
+                </label>
+                <input
+                    type="file"
+                    accept="image/*"
+                    id="cover"
+                    name="image"
+                    className="border rounded p-2 ml-2 w-1/3 h-15"
+                />
+                <button
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                >
+                    上传封面
+                </button>
+            </div>
+        </form>
 
-            <Link href="/">
-                <p className="mt-4 text-center text-blue-500 underline cursor-pointer">返回首页</p>
-            </Link>
-        </div>
-    )
+        <br />
+
+        {/* NFTCard Modal */}
+        <Modal width="50%" isVisible={isVisible}>
+            <NftCard
+                chain="Scroll Sepolia"
+                moralisApiResult={{
+                    amount: '1',
+                    block_number: '15957801',
+                    block_number_minted: '12346998',
+                    contract_type: 'ERC721',
+                    last_metadata_sync: '2022-10-04T14:50:00.573Z',
+                    last_token_uri_sync: '2022-10-04T14:49:59.308Z',
+                    metadata: '{"image":"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
+                    minter_address: {minterAddress},
+                    name: 'BoredApeYachtClub',
+                    owner_of: '0x6682f185d982bd341a0e1dfccbc2562e3cb1eea7',
+                    symbol: 'BAYC',
+                    token_address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
+                    token_hash: '61554743720b60143f35e7adcc2a6fc7',
+                    token_id: '4789',
+                    token_uri: 'https://ipfs.moralis.io:2053/ipfs/bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json',
+                }}
+            customize={{
+                // backgroundColor: '#F0F8FF',
+                border: '2px solid black',
+                // borderRadius: '10px',
+                // fontSize: '16px',
+                // fontWeight: '700',
+                // margin: '50px',
+                // padding: '20px',
+                width:'100%',
+                height: '100%',
+              }}
+            />
+        </Modal>
+
+        <Link href="/">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">返回首页</button>
+        </Link>
+    </div>
+)
 }
 
 export default UploadPage

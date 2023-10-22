@@ -120,30 +120,45 @@ export default function VideoPage() {
 
     return (
         <div>
+            {/* header */}
             <div className="py-6 px-6 font-bold text-xl flex items-center justify-between">
                 <h1>Playing Video {videoId}</h1>
                 <Link href={`/`} className="font-bold">
                     <p>返回首页</p>
                 </Link>
             </div>
-            <video width="640" height="360" controls autoPlay>
-                <source src={`/videos/${videoId}.mp4`} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <br className="py-" />
-            <br />
-            <div className="flex justify-center" onClick={play}>
-                广告
+
+            
+            <div className="flex justify-center items-center h-min-screen">
+                 {/* ad */}
+                <div className="w-1/5 h-120" onClick={play}>
+                    <img
+                        src={adImages[currentAdIndex]}
+                        alt="Advertisement"
+                        className="transition-opacity w-full h-full"
+                        onClick={() => handleAdClick(currentAdIndex)}
+                    />
+                </div>
+
+                {/* video */}
+                <div className="w-3/5 h-240 ml-5 mr-5">
+                    <video className="w-full h-full" controls autoPlay>
+                        <source src={`/videos/${videoId}.mp4`} type="video/mp4"/>
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                {/* ad */}
+                <div className="w-1/5 h-120" onClick={play}>
+                    <img
+                        src={adImages[currentAdIndex]}
+                        alt="Advertisement"
+                        className="transition-opacity w-full h-full"
+                        onClick={() => handleAdClick(currentAdIndex)}
+                    />
+                </div>
             </div>
 
-            <div className="overflow-hidden relative w-640px top-1">
-                <img
-                    src={adImages[currentAdIndex]}
-                    alt="Advertisement"
-                    className="transition-opacity w-full h-auto"
-                    onClick={() => handleAdClick(currentAdIndex)}
-                />
-            </div>
         </div>
     )
 }

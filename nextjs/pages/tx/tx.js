@@ -170,7 +170,8 @@ export default function Tx() {
     return (
         <div>
             <Header />
-            <div className="flex justify-between">
+            {/* buttons */}
+            <div className="flex justify-between m-5">
                 <Button
                     text="Watch Vedio Button"
                     color="green"
@@ -186,34 +187,38 @@ export default function Tx() {
                     onClick={handlewatchADClick}
                 />
             </div>
-            <div className="bg-gray-100 rounded-lg p-4 space-y-4">
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Current Account Balance:</span>
-                    <span className="ml-auto text-gray-600">{userbalance} VIDToken</span>
-                </div>
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Creator1 Balance:</span>
-                    <span className="ml-auto text-gray-600">{user1balance} VIDToken</span>
-                </div>
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Creator2 Balance:</span>
-                    <span className="ml-auto text-gray-600">{user2balance} VIDToken</span>
-                </div>
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Creator3 Balance:</span>
-                    <span className="ml-auto text-gray-600">{user3balance} VIDToken</span>
-                </div>
 
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Video Platform Balance :</span>
-                    <span className="ml-auto text-gray-600">{platformbalance} VIDToken</span>
-                </div>
-                <div className="flex items-center">
-                    <span className="text-gray-800 font-semibold">Advertiser Balance :</span>
-                    <span className="ml-auto text-gray-600">{advertiserbalance} VIDToken</span>
+            <div className="flex justify-center items-center">
+                <div className="bg-gray-100 rounded-lg p-4 space-y-4 w-2/3">
+
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Current Account Balance:</span>
+                        <span className="ml-auto text-gray-600">{userbalance} VIDToken</span>
+                    </div>
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Creator1 Balance:</span>
+                        <span className="ml-auto text-gray-600">{user1balance} VIDToken</span>
+                    </div>
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Creator2 Balance:</span>
+                        <span className="ml-auto text-gray-600">{user2balance} VIDToken</span>
+                    </div>
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Creator3 Balance:</span>
+                        <span className="ml-auto text-gray-600">{user3balance} VIDToken</span>
+                    </div>
+
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Video Platform Balance :</span>
+                        <span className="ml-auto text-gray-600">{platformbalance} VIDToken</span>
+                    </div>
+                    <div className="w-full h-10">
+                        <span className="text-gray-800 font-semibold">Advertiser Balance :</span>
+                        <span className="ml-auto text-gray-600">{advertiserbalance} VIDToken</span>
+                    </div>
                 </div>
             </div>
-            <h1></h1>
+
         </div>
     )
 }
