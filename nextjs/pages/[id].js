@@ -141,8 +141,8 @@ export default function VideoPage() {
                 </div>
 
                 {/* video */}
-                <div className="w-3/5 h-240 ml-5 mr-5">
-                    <video className="w-full h-full" controls autoPlay>
+                <div className="w-3/5 h-2/3 ml-5 mr-5">
+                    <video className="w-full h-full max-w-none" controls autoPlay>
                         <source src={`/videos/${videoId}.mp4`} type="video/mp4"/>
                         Your browser does not support the video tag.
                     </video>

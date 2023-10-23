@@ -1,5 +1,5 @@
 import Header from "../../components/Header2"
-import { Button } from "web3uikit"
+import { Button, Widget } from "web3uikit"
 import { ethers } from "ethers"
 import networkMapping from "../../constants/networkMapping.json"
 import vidToken_abi from "../../constants/VIDToken.json"
@@ -171,16 +171,18 @@ export default function Tx() {
         <div>
             <Header />
             {/* buttons */}
-            <div className="flex justify-between m-5">
+            <div className="flex justify-between m-48 mt-5 mb-5">
                 <Button
+                    className="h-10"
                     text="Watch Vedio Button"
                     color="green"
                     theme="primary"
                     onClick={handlewatchTVClick}
                 />
-                <Button text="Refresh" color="blue" theme="colored" onClick={handlrefreshClick} />
+                <Button className="h-10" text="Refresh" color="blue" theme="colored" onClick={handlrefreshClick} />
 
                 <Button
+                    className="h-10"
                     text="Watch AD Button "
                     color="blue"
                     theme="colored"
@@ -189,33 +191,27 @@ export default function Tx() {
             </div>
 
             <div className="flex justify-center items-center">
-                <div className="bg-gray-100 rounded-lg p-4 space-y-4 w-2/3">
+                <div className="rounded-lg w-5/6">
+                    <div style={{ display: 'grid', gap: '20px', padding: '40px 20px' }}>
+                        <section style={{ display: 'flex', gap: '20px' }}>
+                            <Widget info={userbalance} title="Current Account Balance" />
+                        </section>
+                        <section style={{ display: 'flex', gap: '20px' }}>
+                            <Widget info={user1balance} title="Creator1 Balance">
+                                {/* <div>CHART COMING SOON</div> */}
+                            </Widget>
+                            <Widget info={user2balance} title="Creator2 Balance">
+                            </Widget>
+                            <Widget info={user3balance} title="Creator3 Balance">
+                            </Widget>
+                        </section>
+                        <section style={{ display: 'flex', gap: '20px' }}>
+                            <Widget info={platformbalance} title="Video Platform Balance" />
+                            <Widget info={advertiserbalance} title="Advertiser Balance" />
 
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Current Account Balance:</span>
-                        <span className="ml-auto text-gray-600">{userbalance} VIDToken</span>
-                    </div>
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Creator1 Balance:</span>
-                        <span className="ml-auto text-gray-600">{user1balance} VIDToken</span>
-                    </div>
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Creator2 Balance:</span>
-                        <span className="ml-auto text-gray-600">{user2balance} VIDToken</span>
-                    </div>
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Creator3 Balance:</span>
-                        <span className="ml-auto text-gray-600">{user3balance} VIDToken</span>
+                        </section>
                     </div>
 
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Video Platform Balance :</span>
-                        <span className="ml-auto text-gray-600">{platformbalance} VIDToken</span>
-                    </div>
-                    <div className="w-full h-10">
-                        <span className="text-gray-800 font-semibold">Advertiser Balance :</span>
-                        <span className="ml-auto text-gray-600">{advertiserbalance} VIDToken</span>
-                    </div>
                 </div>
             </div>
 
