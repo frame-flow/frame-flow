@@ -22,10 +22,9 @@ function UploadPage() {
     const dispatch = useNotification()
     const [videoTitle, setVideoTitle] = useState("")
 
-    // NFT info 
-    const [isVisible,setIsVisible] = useState(false)
-    const [minterAddress,setMinterAddress] = useState("");
-
+    // NFT info
+    const [isVisible, setIsVisible] = useState(false)
+    const [minterAddress, setMinterAddress] = useState("")
 
     const onUploadfile = async (event) => {
         event.preventDefault()
@@ -61,7 +60,7 @@ function UploadPage() {
         const platform = accounts["scroll"][1]
         const advertiser = accounts["scroll"][2]
         const user1_address = accounts["scroll"][3]
-        setMinterAddress(user1_address);
+        setMinterAddress(user1_address)
         const user2_address = accounts["scroll"][4]
         const user3_address = accounts["scroll"][5]
         console.log("platform", platform)
@@ -73,6 +72,7 @@ function UploadPage() {
         console.log("videoNFT", videoNFT)
         const tokenUri =
             "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json"
+
         const tx1 = await videoNFT.uploadVideo(tokenUri, account)
         await tx1.wait(1)
 
@@ -91,112 +91,115 @@ function UploadPage() {
         return str1 + "..." + str2
     }
 
-return (
-    <div className="container mx-auto p-4">
-        <Header />
+    return (
+        <div className="container mx-auto p-4">
+            <Header />
 
-        <br />
+            <br />
 
+            <form onSubmit={onUploadfile} encType="multipart/form-data">
+                <div className="mb-4">
+                    <label htmlFor="title" className="font-normal text-2xl">
+                        视频标题
+                    </label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={videoTitle}
+                        onChange={(e) => setVideoTitle(e.target.value)}
+                        className="border rounded p-2 ml-2 w-1/3 h-10"
+                    />
+                </div>
 
-        <form onSubmit={onUploadfile} encType="multipart/form-data">
-            <div className="mb-4">
-                <label htmlFor="title" className="font-normal text-2xl">
-                    视频标题
-                </label>
-                <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={videoTitle}
-                    onChange={(e) => setVideoTitle(e.target.value)}
-                    className="border rounded p-2 ml-2 w-1/3 h-10"
+                <div className="mt-10 mb-4 flex items-center">
+                    <label htmlFor="video" className="font-normal text-2xl ">
+                        上传视频
+                    </label>
+                    <input
+                        type="file"
+                        id="video"
+                        name="file"
+                        className="border rounded p-2 ml-2 w-1/3 h-15"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    >
+                        上传视频
+                    </button>
+                </div>
+            </form>
+
+            <br />
+
+            <form onSubmit={onUploadimg} encType="multipart/form-data">
+                <div className="mt-5 mb-4 flex items-center">
+                    <label htmlFor="cover" className="font-normal text-2xl">
+                        上传封面
+                    </label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="cover"
+                        name="image"
+                        className="border rounded p-2 ml-2 w-1/3 h-15"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    >
+                        上传封面
+                    </button>
+                </div>
+            </form>
+
+            <br />
+
+            {/* NFTCard Modal */}
+            <Modal width="50%" isVisible={isVisible}>
+                <NftCard
+                    chain="Scroll Sepolia"
+                    moralisApiResult={{
+                        amount: "1",
+                        block_number: "15957801",
+                        block_number_minted: "12346998",
+                        contract_type: "ERC721",
+                        last_metadata_sync: "2023-10-23T14:50:00.573Z",
+                        last_token_uri_sync: "2023-10-23T14:49:59.308Z",
+                        metadata:
+                            '{"image":"http://bafybeiatyvalgfctm3iic4l7fmy5wc54bnso2xvpz2ynob2cu22mzoje4e.ipfs.localhost:8080/?filename=QmPfpuZn4eVgmLZ4KEzL8qQ3SNqFS4EC5uR4uTfAwmAxEC","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
+                        minter_address: { minterAddress },
+                        name: "Video NFT",
+                        owner_of: "0x17E3815D1D94d86D7FFFDe2BE6AA43eEB58255B6",
+                        symbol: "VNFT",
+                        token_address: "0x496881dB83f4a40EFdA68e1E63778522e2aD6De6",
+                        token_hash: "61554743720b60143f35e7adcc2a6fc7",
+                        token_id: "3",
+                        token_uri:
+                            "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json",
+                    }}
+                    customize={{
+                        // backgroundColor: '#F0F8FF',
+                        border: "2px solid black",
+                        // borderRadius: '10px',
+                        // fontSize: '16px',
+                        // fontWeight: '700',
+                        // margin: '50px',
+                        // padding: '20px',
+                        width: "100%",
+                        height: "100%",
+                    }}
                 />
-            </div>
+            </Modal>
 
-            <div className="mt-10 mb-4 flex items-center">
-                <label htmlFor="video" className="font-normal text-2xl ">
-                    上传视频
-                </label>
-                <input
-                    type="file"
-                    id="video"
-                    name="file"
-                    className="border rounded p-2 ml-2 w-1/3 h-15"
-                />
-                <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                >
-                    上传视频
+            <Link href="/">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    返回首页
                 </button>
-            </div>
-        </form>
-
-        <br />
-
-        <form onSubmit={onUploadimg} encType="multipart/form-data">
-            <div className="mt-5 mb-4 flex items-center">
-                <label htmlFor="cover" className="font-normal text-2xl">
-                    上传封面
-                </label>
-                <input
-                    type="file"
-                    accept="image/*"
-                    id="cover"
-                    name="image"
-                    className="border rounded p-2 ml-2 w-1/3 h-15"
-                />
-                <button
-                    type="submit"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
-                >
-                    上传封面
-                </button>
-            </div>
-        </form>
-
-        <br />
-
-        {/* NFTCard Modal */}
-        <Modal width="50%" isVisible={isVisible}>
-            <NftCard
-                chain="Scroll Sepolia"
-                moralisApiResult={{
-                    amount: '1',
-                    block_number: '15957801',
-                    block_number_minted: '12346998',
-                    contract_type: 'ERC721',
-                    last_metadata_sync: '2022-10-04T14:50:00.573Z',
-                    last_token_uri_sync: '2022-10-04T14:49:59.308Z',
-                    metadata: '{"image":"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
-                    minter_address: {minterAddress},
-                    name: 'BoredApeYachtClub',
-                    owner_of: '0x6682f185d982bd341a0e1dfccbc2562e3cb1eea7',
-                    symbol: 'BAYC',
-                    token_address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
-                    token_hash: '61554743720b60143f35e7adcc2a6fc7',
-                    token_id: '4789',
-                    token_uri: 'https://ipfs.moralis.io:2053/ipfs/bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json',
-                }}
-            customize={{
-                // backgroundColor: '#F0F8FF',
-                border: '2px solid black',
-                // borderRadius: '10px',
-                // fontSize: '16px',
-                // fontWeight: '700',
-                // margin: '50px',
-                // padding: '20px',
-                width:'100%',
-                height: '100%',
-              }}
-            />
-        </Modal>
-
-        <Link href="/">
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">返回首页</button>
-        </Link>
-    </div>
-)
+            </Link>
+        </div>
+    )
 }
 
 export default UploadPage
