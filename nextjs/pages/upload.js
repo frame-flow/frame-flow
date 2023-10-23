@@ -22,12 +22,18 @@ function UploadPage() {
     const dispatch = useNotification()
     const [videoTitle, setVideoTitle] = useState("")
 
+<<<<<<< HEAD
     // NFT info 
     const [isVisible, setIsVisible] = useState(false)
     const [minterAddress, setMinterAddress] = useState("");
 
     const formRef = React.createRef(); 
 
+=======
+    // NFT info
+    const [isVisible, setIsVisible] = useState(false)
+    const [minterAddress, setMinterAddress] = useState("")
+>>>>>>> 69115975c3ada357f63a9dd8d53c16a6f530d90f
 
     const onUploadfile = async (event) => {
         event.preventDefault()
@@ -67,7 +73,7 @@ function UploadPage() {
         const platform = accounts["scroll"][1]
         const advertiser = accounts["scroll"][2]
         const user1_address = accounts["scroll"][3]
-        setMinterAddress(user1_address);
+        setMinterAddress(user1_address)
         const user2_address = accounts["scroll"][4]
         const user3_address = accounts["scroll"][5]
         console.log("platform", platform)
@@ -79,6 +85,7 @@ function UploadPage() {
         console.log("videoNFT", videoNFT)
         const tokenUri =
             "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json"
+
         const tx1 = await videoNFT.uploadVideo(tokenUri, account)
         await tx1.wait(1)
 
@@ -103,6 +110,7 @@ function UploadPage() {
 
             <br />
 
+<<<<<<< HEAD
             <div
                 style={{
                     height: '1px',
@@ -180,12 +188,73 @@ function UploadPage() {
                     ]}
                 />
             </div>
+=======
+            <form onSubmit={onUploadfile} encType="multipart/form-data">
+                <div className="mb-4">
+                    <label htmlFor="title" className="font-normal text-2xl">
+                        视频标题
+                    </label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value={videoTitle}
+                        onChange={(e) => setVideoTitle(e.target.value)}
+                        className="border rounded p-2 ml-2 w-1/3 h-10"
+                    />
+                </div>
+
+                <div className="mt-10 mb-4 flex items-center">
+                    <label htmlFor="video" className="font-normal text-2xl ">
+                        上传视频
+                    </label>
+                    <input
+                        type="file"
+                        id="video"
+                        name="file"
+                        className="border rounded p-2 ml-2 w-1/3 h-15"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    >
+                        上传视频
+                    </button>
+                </div>
+            </form>
+
+            <br />
+
+            <form onSubmit={onUploadimg} encType="multipart/form-data">
+                <div className="mt-5 mb-4 flex items-center">
+                    <label htmlFor="cover" className="font-normal text-2xl">
+                        上传封面
+                    </label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        id="cover"
+                        name="image"
+                        className="border rounded p-2 ml-2 w-1/3 h-15"
+                    />
+                    <button
+                        type="submit"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    >
+                        上传封面
+                    </button>
+                </div>
+            </form>
+
+            <br />
+>>>>>>> 69115975c3ada357f63a9dd8d53c16a6f530d90f
 
             {/* NFTCard Modal */}
             <Modal width="50%" isVisible={isVisible}>
                 <NftCard
                     chain="Scroll Sepolia"
                     moralisApiResult={{
+<<<<<<< HEAD
                         amount: '1',
                         block_number: '15957801',
                         block_number_minted: '12346998',
@@ -205,19 +274,53 @@ function UploadPage() {
                     customize={{
                         // backgroundColor: '#F0F8FF',
                         border: '2px solid black',
+=======
+                        amount: "1",
+                        block_number: "15957801",
+                        block_number_minted: "12346998",
+                        contract_type: "ERC721",
+                        last_metadata_sync: "2023-10-23T14:50:00.573Z",
+                        last_token_uri_sync: "2023-10-23T14:49:59.308Z",
+                        metadata:
+                            '{"image":"http://bafybeiatyvalgfctm3iic4l7fmy5wc54bnso2xvpz2ynob2cu22mzoje4e.ipfs.localhost:8080/?filename=QmPfpuZn4eVgmLZ4KEzL8qQ3SNqFS4EC5uR4uTfAwmAxEC","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
+                        minter_address: { minterAddress },
+                        name: "Video NFT",
+                        owner_of: "0x17E3815D1D94d86D7FFFDe2BE6AA43eEB58255B6",
+                        symbol: "VNFT",
+                        token_address: "0x496881dB83f4a40EFdA68e1E63778522e2aD6De6",
+                        token_hash: "61554743720b60143f35e7adcc2a6fc7",
+                        token_id: "3",
+                        token_uri:
+                            "ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json",
+                    }}
+                    customize={{
+                        // backgroundColor: '#F0F8FF',
+                        border: "2px solid black",
+>>>>>>> 69115975c3ada357f63a9dd8d53c16a6f530d90f
                         // borderRadius: '10px',
                         // fontSize: '16px',
                         // fontWeight: '700',
                         // margin: '50px',
                         // padding: '20px',
+<<<<<<< HEAD
                         width: '100%',
                         height: '100%',
+=======
+                        width: "100%",
+                        height: "100%",
+>>>>>>> 69115975c3ada357f63a9dd8d53c16a6f530d90f
                     }}
                 />
             </Modal>
 
             <Link href="/">
+<<<<<<< HEAD
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">返回首页</button>
+=======
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    返回首页
+                </button>
+>>>>>>> 69115975c3ada357f63a9dd8d53c16a6f530d90f
             </Link>
         </div>
     )
