@@ -3,7 +3,7 @@ module.exports = {
     theme: {
         extend: {
             spacing: {
-                '128': '45rem',
+                '128': '68rem',
               },
             colors:{
                 'darkP':'#201535',
@@ -17,6 +17,10 @@ module.exports = {
                 'btnl':'#fdcb3a',
                 'btnr':'#ed5174',
                 'noHover':'#1a1135',
+
+                'bluebtnl':'#5CC7FA',
+                'bluebtnr':'#6C50F9',
+
 
                 'footer':'#712af9'
             }
