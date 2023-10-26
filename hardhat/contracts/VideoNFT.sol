@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 error VideoNFT__NotOwner();
 error VideoNFT__NotAdmin();
+error VideoNFT__NFTCannotTransfer();
 
 contract VideoNFT is ERC721 {
     using Strings for uint256;
@@ -45,6 +46,31 @@ contract VideoNFT is ERC721 {
         }
         bindToPlatform[tokenId] = platform;
         return bindToPlatform[tokenId];
+    }
+
+    function transferFrom(
+        address /*from*/,
+        address /*to*/,
+        uint256 /*tokenId*/
+    ) public override {
+        revert VideoNFT__NFTCannotTransfer();
+    }
+
+    function safeTransferFrom(
+        address /*from*/,
+        address /*to*/,
+        uint256 /*tokenId*/
+    ) public override {
+        revert VideoNFT__NFTCannotTransfer();
+    }
+
+    function safeTransferFrom(
+        address /*from*/,
+        address /*to*/,
+        uint256 /*tokenId*/,
+        bytes memory /*data*/
+    ) public override {
+        revert VideoNFT__NFTCannotTransfer();
     }
 
     function setTokenUri(string memory token_uri, uint256 tokenId) internal {

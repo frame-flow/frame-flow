@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+// 引入标准的 ERC20 接口
+import "./VIDToken.sol";
 
 error NotApprovedForMarketplace();
 error NoProceeds();
