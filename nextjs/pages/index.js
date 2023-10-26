@@ -34,9 +34,9 @@ import { useContext } from "react"
 import { SharedStateContext } from "../components/SharedStateContext"
 import Footer from "../components/Footer"
 
-
 const VIDToken_addr = networkMapping["534351"].VIDToken[0]
 const TESTNET_URL = "https://sepolia-rpc.scroll.io/"
+const bgImg = `/default.jpg`
 
 export default function HomePage({ videos }) {
     const {
@@ -71,31 +71,42 @@ export default function HomePage({ videos }) {
     }
     return (
         <>
-            <div className="flex justify-start h-min-screen">
+            <div className="w-full">
+                {/* home header */}
+                <div className="py-6 px-6 font-bold text-xl flex items-center justify-between w-full h-34 fixed bg-header">
+                    <p className="text-5xl text-gray-50">Frame-Flow</p>
+                    <div>
+                        <Link href={`/tx/tx`} className="font-bold text-gray-50">
+                            <button className="w-24 h-10 hover-underline text-xl">查询余额</button>
+                        </Link>
+                        <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
+                            <button className="w-24 h-10  hover-underline text-xl">查询余额</button>
+                        </Link>
+                        <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
+                            <button className="w-24 h-10 hover-underline text-xl">查询余额</button>
+                        </Link>
+                    </div>
+
+
+                    {/* upload video icon  */}
+                    <Link href={`/upload`} className="font-bold">
+                        <button className="text-2xl text-gray-50 bg-red-400 w-36 rounded-lg h-16  bg-gradient-to-r from-upload-btnl to-upload-btnr hover-rectangle">上传视频</button>
+                    </Link>
+                </div>
+
+                <div className="w-full h-128 bg-gradient-to-r from-btnl to-btnr text-center ">
+                    <img src={bgImg} className="h-full w-full z-0" />
+                    <p className="text-5xl text-gray-50 -mt-80">this is a good project</p>
+                </div>
+
+                {/* <div className="h-80 w-full bg-gray-50 z-50">
+                </div> */}
 
                 {/* videos */}
-                <div className="w-7/8 h-full bg-gray-500 bg-grayG">
-                    {/* home header */}
-                    <div className="py-6 px-6 font-bold text-xl flex items-center justify-between  w-full h-34 fixed bg-header">
-                        <p className="text-4xl text-gray-50">Frame-Flow</p>
-                        <Link href={`/tx/tx`} className="font-bold text-gray-50">
-                            <p>查询余额</p>
-                        </Link>
-
-                        {/* upload video icon  */}
-                        <Link href={`/upload`} className="font-bold">
-                            <button className="text-2xl text-gray-50 bg-red-400 w-36 rounded-lg h-16  bg-gradient-to-r from-upload-btnl to-upload-btnr ">上传视频</button>
-                        </Link>
-                    </div>
-
-                    <div className="w-full h-128 bg-gradient-to-r from-btnl to-btnr">
-                        <img src={videos[0].thumbnail} className="h-full w-full" />
-                    </div>
+                <div className="w-7/8 h-full bg-gray-500 bg-grayG  -mt-10">
                     <div className="bg-darkB m-8 rounded-lg ">
-
-
                         {/* lastest 3 videos */}
-                        <p className="ml-3 text-3xl text-gray-50 mt-10">最新热点</p>
+                        {/* <p className="ml-3 text-3xl text-gray-50">最新热点</p> */}
                         <div className="m-10 ml-0 h-96 rounded-lg grid grid-flow-row auto-rows-min grid-cols-3 p-5">
                             {videos.slice(0, 3).map((video) => (
                                 <div key={video.id} className="ml-5 h-full hover:-translate-y-2 bg-videoBg  rounded-3xl">

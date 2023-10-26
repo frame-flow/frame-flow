@@ -1,0 +1,77 @@
+
+.hover-underline {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 100%; /* 初始时右侧不可见 */
+      height: 2px; /* 底部边框的粗细 */
+      background: linear-gradient(90deg, #e127d2,#8129f3);
+      background-size: 100% 2px; /* 设置渐变的宽度和高度 */
+      transition: right 0.3s ease-out; /* 添加过渡效果 */
+    }
+    &:hover::before {
+      right: 0; /* 鼠标悬停时，将右侧设置为0，显示整个渐变 */
+    }
+  }
+
+@keyframes .hover-underline {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* button */
+.hover-rectangle {
+    position: relative;
+    transform: translateZ(0);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background: linear-gradient(#fdcb3a, #ed5174);
+        transform: scale(0);
+        transition: transform 0.5s ease-out;
+    }
+
+    &:hover::before {
+        transform: scale(1);
+    }
+}
+
+.hover-purple {
+    position: relative;
+    transform: translateZ(0);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        background: linear-gradient(#e127d2, #8129f3);
+        transform: scale(0);
+        transition: transform 0.5s ease-out;
+    }
+
+    &:hover::before {
+        transform: scale(1);
+    }
+}

@@ -171,43 +171,49 @@ export default function Tx() {
         <div>
             <Header />
             {/* buttons */}
-            <div className="flex justify-between m-48 mt-5 mb-5">
-                <Button
+            <div className="flex m-48 mt-5 mb-5">
+                {/* <Button
                     className="h-10"
                     text="Watch Vedio Button"
                     color="green"
                     theme="primary"
                     onClick={handlewatchTVClick}
-                />
-                <Button className="h-10" text="Refresh" color="blue" theme="colored" onClick={handlrefreshClick} />
+                /> */}
+                <button className="text-2xl text-gray-50 bg-red-400 w-40 rounded-lg h-12 
+                bg-gradient-to-r from-bluebtnl to-bluebtnr hover-rectangle" onClick={handlewatchTVClick}>
+                    Watch Vedio
+                </button>
 
-                <Button
-                    className="h-10"
-                    text="Watch AD Button "
-                    color="blue"
-                    theme="colored"
-                    onClick={handlewatchADClick}
-                />
+                <button className="text-2xl text-gray-50 bg-red-400 w-32 rounded-lg h-12 
+                bg-gradient-to-r from-btnl to-btnr hover-purple ml-5" onClick={handlewatchADClick}>
+                    Refresh
+                </button>
+
+                <button className="text-2xl text-gray-50 bg-red-400 w-32 rounded-lg h-12 
+                bg-gradient-to-r from-bluebtnl to-bluebtnr hover-rectangle ml-5" onClick={handlewatchADClick}>
+                    Watch AD
+                </button>
             </div>
 
             <div className="flex justify-center items-center">
-                <div className="rounded-lg w-5/6">
-                    <div style={{ display: 'grid', gap: '20px', padding: '40px 20px' }}>
+                <div className="rounded-lg w-2/3">
+                    <div style={{ display: 'grid', gap: '20px', padding: '40px 20px'}}>
                         <section style={{ display: 'flex', gap: '20px' }}>
-                            <Widget info={userbalance} title="Current Account Balance" />
+                            <Widget className="h-30"  info={userbalance} title="Current Account Balance" />
+                            
                         </section>
                         <section style={{ display: 'flex', gap: '20px' }}>
-                            <Widget info={user1balance} title="Creator1 Balance">
+                            <Widget className="h-30"  info={user1balance} title="Creator1 Balance">
                                 {/* <div>CHART COMING SOON</div> */}
                             </Widget>
-                            <Widget info={user2balance} title="Creator2 Balance">
+                            <Widget className="h-30"  info={user2balance} title="Creator2 Balance">
                             </Widget>
-                            <Widget info={user3balance} title="Creator3 Balance">
+                            <Widget className="h-30"  info={user3balance} title="Creator3 Balance">
                             </Widget>
                         </section>
                         <section style={{ display: 'flex', gap: '20px' }}>
-                            <Widget info={platformbalance} title="Video Platform Balance" />
-                            <Widget info={advertiserbalance} title="Advertiser Balance" />
+                            <Widget className="h-30"  info={platformbalance} title="Video Platform Balance" />
+                            <Widget className="h-30"  info={advertiserbalance} title="Advertiser Balance" />
 
                         </section>
                     </div>
