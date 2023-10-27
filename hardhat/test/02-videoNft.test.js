@@ -81,4 +81,22 @@ describe("VideoNFT", function () {
             )
         })
     })
+    describe("Transfer restrictions", function () {
+        beforeEach(async function () {
+            await videoNFT
+                .connect(admin)
+                .uploadVideo("token_uri_1", user1.address)
+        })
+
+        it("should return correct token counter", async function () {
+            const tokenCounter = await videoNFT.getTokenCounter()
+
+            expect(tokenCounter).to.equal(1)
+        })
+        it("should return correct NFT platform address", async function () {
+            const bindToPlatform = await videoNFT.getNftplatform(7)
+
+            expect(bindToPlatform).to.equal(ethers.ZeroAddress)
+        })
+    })
 })

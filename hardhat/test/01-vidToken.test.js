@@ -71,7 +71,7 @@ describe("VIDToken", function () {
 
         it("Whitelisted non-advertisers cannot sell to non-advertisers", async function () {
             await vidToken.connect(admin).playVideo(user1.address, 1000)
-            console.log(await vidToken.balanceOf(user1.address))
+
             await expect(
                 vidToken.connect(user1).transfer(user2.address, 500)
             ).to.be.revertedWithCustomError(
@@ -110,7 +110,7 @@ describe("VIDToken", function () {
 
         it("Advertisers cannot sell Token", async function () {
             await vidToken.connect(admin).playVideo(user1.address, 1000)
-            console.log(await vidToken.balanceOf(user1.address))
+
             await expect(
                 vidToken
                     .connect(admin)

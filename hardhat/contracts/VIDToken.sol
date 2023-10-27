@@ -87,4 +87,8 @@ contract VIDToken is ERC20 {
     function getAdmin() external view returns (address) {
         return i_admin;
     }
+
+    function getWhiteList(address _whitelist) external view returns (bool) {
+        return whitelist[_whitelist];
+    }
 }

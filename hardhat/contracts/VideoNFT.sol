@@ -78,11 +78,11 @@ contract VideoNFT is ERC721 {
         return TOKEN_URI[tokenId];
     }
 
-    function getTokenCounter() public view returns (uint256) {
+    function getTokenCounter() external view returns (uint256) {
         return s_tokenCounter;
     }
 
-    function getNftplatform(uint256 tokenId) public view returns (address) {
+    function getNftplatform(uint256 tokenId) external view returns (address) {
         return bindToPlatform[tokenId];
     }
 }

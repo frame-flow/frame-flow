@@ -74,10 +74,11 @@ contract TokenMarketplace {
             revert NoProceeds();
         }
         s_proceeds[msg.sender] = 0;
-        (bool success, ) = payable(msg.sender).call{value: proceeds}("");
-        if (!success) {
-            revert TransferFailed();
-        }
+        payable(msg.sender).transfer(proceeds);
+        // (bool success, ) = payable(msg.sender).call{value: proceeds}("");
+        // if (!success) {
+        //     revert TransferFailed();
+        // }
     }
 
     function getPrice(uint256 _orderId) public view returns (uint256) {
