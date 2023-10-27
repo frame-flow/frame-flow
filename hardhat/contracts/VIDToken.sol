@@ -73,7 +73,7 @@ contract VIDToken is ERC20 {
             }
         }
         if (!is_advertisers[to]) {
-            if (whitelist[to]) {
+            if (!whitelist[to]) {
                 revert VIDToken__OnlySellToAdvertisers();
             }
         }

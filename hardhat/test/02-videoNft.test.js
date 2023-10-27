@@ -1,6 +1,7 @@
 // test/VideoNFT.test.js
 
 const { expect } = require("chai")
+const { ethers } = require("hardhat")
 
 describe("VideoNFT", function () {
     let VideoNFT, videoNFT, admin, user1, platform1
@@ -31,7 +32,7 @@ describe("VideoNFT", function () {
                 videoNFT
                     .connect(user1)
                     .uploadVideo("token_uri_1", user1.address)
-            ).to.be.revertedWith("VideoNFT__NotAdmin")
+            ).to.be.revertedWithCustomError(videoNFT, "VideoNFT__NotAdmin")
         })
     })
 
@@ -50,7 +51,7 @@ describe("VideoNFT", function () {
         it("Should reject platform change by non-owners", async function () {
             await expect(
                 videoNFT.connect(platform1).changePlatform(0, platform1.address)
-            ).to.be.revertedWith("VideoNFT__NotOwner")
+            ).to.be.revertedWithCustomError(videoNFT, "VideoNFT__NotOwner")
         })
     })
 
@@ -66,7 +67,18 @@ describe("VideoNFT", function () {
                 videoNFT
                     .connect(user1)
                     .transferFrom(user1.address, platform1.address, 0)
-            ).to.be.revertedWith("VideoNFT__NFTCannotTransfer")
+            ).to.be.revertedWithCustomError(
+                videoNFT,
+                "VideoNFT__NFTCannotTransfer"
+            )
+            await expect(
+                videoNFT
+                    .connect(user1)
+                    .safeTransferFrom(user1.address, platform1.address, 0)
+            ).to.be.revertedWithCustomError(
+                videoNFT,
+                "VideoNFT__NFTCannotTransfer"
+            )
         })
     })
 })
