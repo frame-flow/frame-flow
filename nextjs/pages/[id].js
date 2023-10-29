@@ -9,9 +9,15 @@ import accounts from "../constants/account.json"
 import React, { useContext } from "react"
 import { SharedStateContext } from "../components/SharedStateContext"
 
+import { Avatar } from "@web3uikit/core"
+
 const VIDToken_addr = networkMapping["534351"].VIDToken[0]
 const TESTNET_URL = "https://sepolia-rpc.scroll.io/"
 const wallet1 = process.env.NEXT_PUBLIC_ADMIN_PRIVATE_KEY
+
+
+const userImg = "/test.jpg"
+
 export default function VideoPage() {
     const {
         userbalance,
@@ -129,25 +135,16 @@ export default function VideoPage() {
             </div>
 
 
-            <div className="flex justify-center w-full items-center h-min-screen bg-grayG">
-                {/* ad */}
-                <div className="w-1/5 h-120" onClick={play}>
-                    <img
-                        src={adImages[currentAdIndex]}
-                        alt="Advertisement"
-                        className="transition-opacity w-full h-full"
-                        onClick={() => handleAdClick(currentAdIndex)}
-                    />
-                </div>
+            <div className="flex justify-center w-full h-min-screen bg-grayG">
 
                 {/* video */}
-                <div className="w-3/5 h-1/3 ml-5 mr-5 bg-grayG border-2 border-grayG">
+                <div className="w-3/5 h-1/4 mr-5 bg-videobg border-2 border-grayG rounded-lg">
                     <video controls >
                         <source src={`/videos/${videoId}.mp4`} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
 
-                    <div className="w-full h-16 bg-grayG flex justify-end">
+                    <div className="w-full h-16 flex justify-end">
                         <button className="text-2xl text-grayG mt-3 mr-5 w-32 h-10 rounded-xl bg-videobtn flex hover:border hover:border-gray-500">
                             <div className="ml-3 w-6 h-10">
                                 <svg t="1698481648662" class="icon" viewBox="0 0 1092 1024" version="1.1" width="33" height="40"><path d="M857.28 344.992h-264.832c12.576-44.256 18.944-83.584 18.944-118.208 0-78.56-71.808-153.792-140.544-143.808-60.608 8.8-89.536 59.904-89.536 125.536v59.296c0 76.064-58.208 140.928-132.224 148.064l-117.728-0.192A67.36 67.36 0 0 0 64 483.04V872c0 37.216 30.144 67.36 67.36 67.36h652.192a102.72 102.72 0 0 0 100.928-83.584l73.728-388.96a102.72 102.72 0 0 0-100.928-121.824zM128 872V483.04c0-1.856 1.504-3.36 3.36-3.36H208v395.68H131.36A3.36 3.36 0 0 1 128 872z m767.328-417.088l-73.728 388.96a38.72 38.72 0 0 1-38.048 31.488H272V476.864a213.312 213.312 0 0 0 173.312-209.088V208.512c0-37.568 12.064-58.912 34.72-62.176 27.04-3.936 67.36 38.336 67.36 80.48 0 37.312-9.504 84-28.864 139.712a32 32 0 0 0 30.24 42.496h308.512a38.72 38.72 0 0 1 38.048 45.888z" p-id="2727" fill="#707070"></path></svg>
@@ -171,15 +168,63 @@ export default function VideoPage() {
                     </div>
                 </div>
 
-                {/* ad */}
-                <div className="w-1/5 h-120" onClick={play}>
-                    <img
-                        src={adImages[currentAdIndex + 1]}
-                        alt="Advertisement"
-                        className="transition-opacity w-full h-full"
-                        onClick={() => handleAdClick(currentAdIndex + 1)}
-                    />
+                <div className="w-1/4 h-full px-4 py-4 bg-videobg h-1/3 border-2 border-grayG rounded-lg mt-0">
+                    {/* ad */}
+                    <div className="w-full h-48" onClick={play}>
+                        <img
+                            src={adImages[currentAdIndex]}
+                            alt="Advertisement"
+                            className="transition-opacity w-full h-full"
+                            onClick={() => handleAdClick(currentAdIndex)}
+                        />
+                    </div>
+
+                    <div className="w-full h-120 text-gray-50">
+                        <div className="mt-20">
+                            <div className="flex">
+                                <Avatar
+                                    image="https://academy.moralis.io/wp-content/uploads/2021/12/Illustration4_home.svg"
+                                    isRounded
+                                    theme="image"
+                                    size={60}
+                                />
+                                <span className="ml-5 mt-5">0x1234567&nbsp;:&nbsp;&nbsp;好漂亮的风景</span>
+                            </div>
+
+                            <div className="flex mt-8">
+                                <Avatar
+                                    isRounded
+                                    theme="image"
+                                    size={60}
+                                />
+                                <span className="ml-5 mt-5">0x11111111&nbsp;:&nbsp;&nbsp;看了很想去这里体验一下</span>
+                            </div>
+
+                            <div className="flex mt-8">
+                                <Avatar
+                                    text="DM"
+                                    isRounded
+                                    size={60}
+                                />
+                                <span className="ml-5 mt-5">0x22222222&nbsp;:&nbsp;&nbsp;很治愈</span>
+                            </div>
+
+                            <div className="flex mt-8">
+                                <Avatar
+                                     avatarBackground="#003470"
+                                     characterAmount={3}
+                                     isRounded
+                                     text="Ethereum"
+                                     theme="letters"
+                                    size={60}
+                                />
+                                <span className="ml-5 mt-5">0x3333333&nbsp;:&nbsp;&nbsp; 漫山雪花飘，天地遍苍茫。</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
 
         </div>

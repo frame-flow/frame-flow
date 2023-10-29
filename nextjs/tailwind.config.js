@@ -4,6 +4,7 @@ module.exports = {
         extend: {
             spacing: {
                 '120':'32rem',
+                '126':'37rem',
                 '128': '68rem',
               },
             colors:{
@@ -24,6 +25,7 @@ module.exports = {
 
                 // 'videobtn':'#f2f2f2',
                 'videobtn':'#0f0f0f',
+                'videobg':'#151719',
 
                 'infol':'#fdce39',
                 'infor':'#ed5274',
