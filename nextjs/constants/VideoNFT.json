@@ -3,43 +3,19 @@
         "type": "constructor",
         "stateMutability": "undefined",
         "payable": false,
-        "inputs": [
-            {
-                "type": "address",
-                "name": "admin"
-            }
-        ]
+        "inputs": [{ "type": "address", "name": "admin" }]
     },
-    {
-        "type": "error",
-        "name": "VideoNFT__NotAdmin",
-        "inputs": []
-    },
-    {
-        "type": "error",
-        "name": "VideoNFT__NotOwner",
-        "inputs": []
-    },
+    { "type": "error", "name": "VideoNFT__NFTCannotTransfer", "inputs": [] },
+    { "type": "error", "name": "VideoNFT__NotAdmin", "inputs": [] },
+    { "type": "error", "name": "VideoNFT__NotOwner", "inputs": [] },
     {
         "type": "event",
         "anonymous": false,
         "name": "Approval",
         "inputs": [
-            {
-                "type": "address",
-                "name": "owner",
-                "indexed": true
-            },
-            {
-                "type": "address",
-                "name": "approved",
-                "indexed": true
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId",
-                "indexed": true
-            }
+            { "type": "address", "name": "owner", "indexed": true },
+            { "type": "address", "name": "approved", "indexed": true },
+            { "type": "uint256", "name": "tokenId", "indexed": true }
         ]
     },
     {
@@ -47,21 +23,9 @@
         "anonymous": false,
         "name": "ApprovalForAll",
         "inputs": [
-            {
-                "type": "address",
-                "name": "owner",
-                "indexed": true
-            },
-            {
-                "type": "address",
-                "name": "operator",
-                "indexed": true
-            },
-            {
-                "type": "bool",
-                "name": "approved",
-                "indexed": false
-            }
+            { "type": "address", "name": "owner", "indexed": true },
+            { "type": "address", "name": "operator", "indexed": true },
+            { "type": "bool", "name": "approved", "indexed": false }
         ]
     },
     {
@@ -69,34 +33,16 @@
         "anonymous": false,
         "name": "Transfer",
         "inputs": [
-            {
-                "type": "address",
-                "name": "from",
-                "indexed": true
-            },
-            {
-                "type": "address",
-                "name": "to",
-                "indexed": true
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId",
-                "indexed": true
-            }
+            { "type": "address", "name": "from", "indexed": true },
+            { "type": "address", "name": "to", "indexed": true },
+            { "type": "uint256", "name": "tokenId", "indexed": true }
         ]
     },
     {
         "type": "event",
         "anonymous": false,
         "name": "VNFTMinted",
-        "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId",
-                "indexed": false
-            }
-        ]
+        "inputs": [{ "type": "uint256", "name": "tokenId", "indexed": false }]
     },
     {
         "type": "function",
@@ -104,14 +50,8 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "to"
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
+            { "type": "address", "name": "to" },
+            { "type": "uint256", "name": "tokenId" }
         ],
         "outputs": []
     },
@@ -121,18 +61,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "address",
-                "name": "owner"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "uint256",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "address", "name": "owner" }],
+        "outputs": [{ "type": "uint256", "name": "" }]
     },
     {
         "type": "function",
@@ -140,21 +70,10 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            },
-            {
-                "type": "address",
-                "name": "platform"
-            }
+            { "type": "uint256", "name": "tokenId" },
+            { "type": "address", "name": "platform" }
         ],
-        "outputs": [
-            {
-                "type": "address",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "address", "name": "" }]
     },
     {
         "type": "function",
@@ -162,18 +81,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "address",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "uint256", "name": "tokenId" }],
+        "outputs": [{ "type": "address", "name": "" }]
     },
     {
         "type": "function",
@@ -181,18 +90,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "address",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "uint256", "name": "tokenId" }],
+        "outputs": [{ "type": "address", "name": "" }]
     },
     {
         "type": "function",
@@ -201,12 +100,7 @@
         "stateMutability": "view",
         "payable": false,
         "inputs": [],
-        "outputs": [
-            {
-                "type": "uint256",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "uint256", "name": "" }]
     },
     {
         "type": "function",
@@ -215,21 +109,10 @@
         "stateMutability": "view",
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "owner"
-            },
-            {
-                "type": "address",
-                "name": "operator"
-            }
+            { "type": "address", "name": "owner" },
+            { "type": "address", "name": "operator" }
         ],
-        "outputs": [
-            {
-                "type": "bool",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "bool", "name": "" }]
     },
     {
         "type": "function",
@@ -238,12 +121,7 @@
         "stateMutability": "view",
         "payable": false,
         "inputs": [],
-        "outputs": [
-            {
-                "type": "string",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "string", "name": "" }]
     },
     {
         "type": "function",
@@ -251,18 +129,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "address",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "uint256", "name": "tokenId" }],
+        "outputs": [{ "type": "address", "name": "" }]
     },
     {
         "type": "function",
@@ -270,18 +138,9 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "from"
-            },
-            {
-                "type": "address",
-                "name": "to"
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
+            { "type": "address", "name": "" },
+            { "type": "address", "name": "" },
+            { "type": "uint256", "name": "" }
         ],
         "outputs": []
     },
@@ -291,22 +150,10 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "from"
-            },
-            {
-                "type": "address",
-                "name": "to"
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            },
-            {
-                "type": "bytes",
-                "name": "data"
-            }
+            { "type": "address", "name": "" },
+            { "type": "address", "name": "" },
+            { "type": "uint256", "name": "" },
+            { "type": "bytes", "name": "" }
         ],
         "outputs": []
     },
@@ -316,14 +163,8 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "operator"
-            },
-            {
-                "type": "bool",
-                "name": "approved"
-            }
+            { "type": "address", "name": "operator" },
+            { "type": "bool", "name": "approved" }
         ],
         "outputs": []
     },
@@ -333,18 +174,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "bytes4",
-                "name": "interfaceId"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "bool",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "bytes4", "name": "interfaceId" }],
+        "outputs": [{ "type": "bool", "name": "" }]
     },
     {
         "type": "function",
@@ -353,12 +184,7 @@
         "stateMutability": "view",
         "payable": false,
         "inputs": [],
-        "outputs": [
-            {
-                "type": "string",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "string", "name": "" }]
     },
     {
         "type": "function",
@@ -366,18 +192,8 @@
         "constant": true,
         "stateMutability": "view",
         "payable": false,
-        "inputs": [
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
-        ],
-        "outputs": [
-            {
-                "type": "string",
-                "name": ""
-            }
-        ]
+        "inputs": [{ "type": "uint256", "name": "tokenId" }],
+        "outputs": [{ "type": "string", "name": "" }]
     },
     {
         "type": "function",
@@ -385,18 +201,9 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "address",
-                "name": "from"
-            },
-            {
-                "type": "address",
-                "name": "to"
-            },
-            {
-                "type": "uint256",
-                "name": "tokenId"
-            }
+            { "type": "address", "name": "" },
+            { "type": "address", "name": "" },
+            { "type": "uint256", "name": "" }
         ],
         "outputs": []
     },
@@ -406,20 +213,9 @@
         "constant": false,
         "payable": false,
         "inputs": [
-            {
-                "type": "string",
-                "name": "token_uri"
-            },
-            {
-                "type": "address",
-                "name": "to"
-            }
+            { "type": "string", "name": "token_uri" },
+            { "type": "address", "name": "to" }
         ],
-        "outputs": [
-            {
-                "type": "uint256",
-                "name": ""
-            }
-        ]
+        "outputs": [{ "type": "uint256", "name": "" }]
     }
 ]

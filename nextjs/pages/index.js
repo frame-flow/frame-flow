@@ -81,26 +81,27 @@ export default function HomePage({ videos }) {
                             <button className="w-24 h-10 hover-underline text-xl">查询余额</button>
                         </Link>
                         <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
-                            <button className="w-24 h-10  hover-underline text-xl">查询余额</button>
+                            <button className="w-24 h-10  hover-underline text-xl">
+                                查询余额
+                            </button>
                         </Link>
                         <Link href={`/swap`} className="font-bold text-gray-50 ml-10">
                             <button className="w-24 h-10 hover-underline text-xl">swap</button>
                         </Link>
                     </div>
 
-
                     {/* upload video icon  */}
                     <Link href={`/upload`} className="font-bold">
-                        <button className="text-2xl text-gray-50 bg-red-400 w-36 rounded-lg h-16  bg-gradient-to-r from-upload-btnl to-upload-btnr hover-rectangle">上传视频</button>
+                        <button className="text-2xl text-gray-50 bg-red-400 w-36 rounded-lg h-16  bg-gradient-to-r from-upload-btnl to-upload-btnr hover-rectangle">
+                            上传视频
+                        </button>
                     </Link>
                 </div>
 
                 <div className="w-full h-128 bg-gradient-to-r from-btnl to-btnr text-center  bg-grayG">
                     <img src={bgImg} className="h-full w-full z-0" />
 
-                    <p className="text-5xl text-gray-50 -mt-80">
-                        this is a good project
-                        </p>
+                    <p className="text-5xl text-gray-50 -mt-80"></p>
                     {/* <Tx/> */}
                 </div>
 
@@ -114,15 +115,25 @@ export default function HomePage({ videos }) {
                         {/* <p className="ml-3 text-3xl text-gray-50">最新热点</p> */}
                         <div className="m-10 ml-0 h-96 rounded-lg grid grid-flow-row auto-rows-min grid-cols-3 p-5">
                             {videos.slice(0, 3).map((video) => (
-                                <div key={video.id} className="ml-5 h-full hover:-translate-y-2 bg-videoBg  rounded-3xl">
+                                <div
+                                    key={video.id}
+                                    className="ml-5 h-full hover:-translate-y-2 bg-videoBg  rounded-3xl"
+                                >
                                     <Link href={`/${video.id}`} onClick={handlewatchClick}>
-                                        <img src={video.thumbnail} alt={video.title} className="w-full h-4/6  rounded-tl-3xl rounded-tr-3xl" />
+                                        <img
+                                            src={video.thumbnail}
+                                            alt={video.title}
+                                            className="w-full h-4/6  rounded-tl-3xl rounded-tr-3xl"
+                                        />
                                         <div className="h-1/6 flex justify-center items-center">
-                                            <p className="font-bold text-xl text-gray-50">{video.title}</p>
+                                            <p className="font-bold text-xl text-gray-50">
+                                                {video.title}
+                                            </p>
                                         </div>
-                                   
 
-                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-24 bg-noHover   hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">播放</button>
+                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-24 bg-noHover   hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">
+                                            播放
+                                        </button>
                                     </Link>
                                 </div>
                             ))}
@@ -131,14 +142,25 @@ export default function HomePage({ videos }) {
                         {/* videos */}
                         <p className="ml-3 mt-60 text-3xl text-gray-50">精彩推荐</p>
                         <div className="m-10 ml-0 h-84 rounded-lg grid grid-flow-row auto-rows-min grid-cols-4 gap-y-5">
-                            {videos.slice(3,).map((video) => (
-                                <div key={video.id} className="ml-5 h-full hover:-translate-y-2 bg-videoBg  rounded-3xl">
+                            {videos.slice(3).map((video) => (
+                                <div
+                                    key={video.id}
+                                    className="ml-5 h-full hover:-translate-y-2 bg-videoBg  rounded-3xl"
+                                >
                                     <Link href={`/${video.id}`} onClick={handlewatchClick}>
-                                        <img src={video.thumbnail} alt={video.title} className="w-full h-4/6  rounded-tl-3xl rounded-tr-3xl" />
+                                        <img
+                                            src={video.thumbnail}
+                                            alt={video.title}
+                                            className="w-full h-4/6  rounded-tl-3xl rounded-tr-3xl"
+                                        />
                                         <div className="h-1/6 flex justify-center items-center">
-                                            <p className="font-bold text-xl text-gray-50">{video.title}</p>
+                                            <p className="font-bold text-xl text-gray-50">
+                                                {video.title}
+                                            </p>
                                         </div>
-                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-16 bg-noHover hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">播放</button>
+                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-16 bg-noHover hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">
+                                            播放
+                                        </button>
                                     </Link>
                                 </div>
                             ))}
