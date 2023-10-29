@@ -1,7 +1,7 @@
 /*
  * @Author: diana
  * @Date: 2023-10-22 15:17:00
- * @LastEditTime: 2023-10-24 23:47:29
+ * @LastEditTime: 2023-10-29 14:59:57
  */
 import Link from "next/link"
 
@@ -33,6 +33,7 @@ import { Widget } from "@web3uikit/core"
 import { useContext } from "react"
 import { SharedStateContext } from "../components/SharedStateContext"
 import Footer from "../components/Footer"
+// import Tx from "../pages/tx/tx"
 
 const VIDToken_addr = networkMapping["534351"].VIDToken[0]
 const TESTNET_URL = "https://sepolia-rpc.scroll.io/"
@@ -82,8 +83,8 @@ export default function HomePage({ videos }) {
                         <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
                             <button className="w-24 h-10  hover-underline text-xl">查询余额</button>
                         </Link>
-                        <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
-                            <button className="w-24 h-10 hover-underline text-xl">查询余额</button>
+                        <Link href={`/swap`} className="font-bold text-gray-50 ml-10">
+                            <button className="w-24 h-10 hover-underline text-xl">swap</button>
                         </Link>
                     </div>
 
@@ -94,16 +95,20 @@ export default function HomePage({ videos }) {
                     </Link>
                 </div>
 
-                <div className="w-full h-128 bg-gradient-to-r from-btnl to-btnr text-center ">
+                <div className="w-full h-128 bg-gradient-to-r from-btnl to-btnr text-center  bg-grayG">
                     <img src={bgImg} className="h-full w-full z-0" />
-                    <p className="text-5xl text-gray-50 -mt-80">this is a good project</p>
+
+                    <p className="text-5xl text-gray-50 -mt-80">
+                        this is a good project
+                        </p>
+                    {/* <Tx/> */}
                 </div>
 
                 {/* <div className="h-80 w-full bg-gray-50 z-50">
                 </div> */}
 
                 {/* videos */}
-                <div className="w-7/8 h-full bg-gray-500 bg-grayG  -mt-10">
+                <div className="w-7/8 h-full bg-gray-500 bg-grayG -mt-10">
                     <div className="bg-darkB m-8 rounded-lg ">
                         {/* lastest 3 videos */}
                         {/* <p className="ml-3 text-3xl text-gray-50">最新热点</p> */}
@@ -115,9 +120,7 @@ export default function HomePage({ videos }) {
                                         <div className="h-1/6 flex justify-center items-center">
                                             <p className="font-bold text-xl text-gray-50">{video.title}</p>
                                         </div>
-                                        {/* <p className="-mb-15 text-xs text-gray-50">
-                                            这是简介部分这是简介部这是简介这是简这是这
-                                        </p> */}
+                                   
 
                                         <button className="text-2xl text-gray-50 w-full rounded-3xl h-24 bg-noHover   hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">播放</button>
                                     </Link>
@@ -135,7 +138,7 @@ export default function HomePage({ videos }) {
                                         <div className="h-1/6 flex justify-center items-center">
                                             <p className="font-bold text-xl text-gray-50">{video.title}</p>
                                         </div>
-                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-16 bg-noHover   hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">播放</button>
+                                        <button className="text-2xl text-gray-50 w-full rounded-3xl h-16 bg-noHover hover:bg-gradient-to-r hover:from-btnl hover:to-btnr">播放</button>
                                     </Link>
                                 </div>
                             ))}

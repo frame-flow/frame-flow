@@ -172,13 +172,7 @@ export default function Tx() {
             <Header />
             {/* buttons */}
             <div className="flex m-48 mt-5 mb-5">
-                {/* <Button
-                    className="h-10"
-                    text="Watch Vedio Button"
-                    color="green"
-                    theme="primary"
-                    onClick={handlewatchTVClick}
-                /> */}
+              
                 <button className="text-2xl text-gray-50 bg-red-400 w-40 rounded-lg h-12 
                 bg-gradient-to-r from-bluebtnl to-bluebtnr hover-rectangle" onClick={handlewatchTVClick}>
                     Watch Vedio

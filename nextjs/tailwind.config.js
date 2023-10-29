@@ -3,6 +3,7 @@ module.exports = {
     theme: {
         extend: {
             spacing: {
+                '120':'32rem',
                 '128': '68rem',
               },
             colors:{
@@ -21,6 +22,11 @@ module.exports = {
                 'bluebtnl':'#5CC7FA',
                 'bluebtnr':'#6C50F9',
 
+                // 'videobtn':'#f2f2f2',
+                'videobtn':'#0f0f0f',
+
+                'infol':'#fdce39',
+                'infor':'#ed5274',
 
                 'footer':'#712af9'
             }

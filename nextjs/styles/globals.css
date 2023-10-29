@@ -13,3 +13,8 @@ li {
 img {
     margin-right: 10px;
 }
+
+video {
+    width:1200px;
+    height:760px;
+}

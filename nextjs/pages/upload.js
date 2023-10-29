@@ -1,9 +1,9 @@
 import Link from "next/link"
 import Header from "../components/Header"
-import React,{ useEffect, useState,createRef } from "react"
+import React, { useEffect, useState, createRef } from "react"
 import { useNotification, Modal } from "web3uikit"
 
-import { NftCard,Stepper,Form } from "@web3uikit/core"
+import { NftCard, Stepper, Form, Input,Upload } from "@web3uikit/core"
 
 import { ethers } from "ethers"
 import { useMoralis } from "react-moralis"
@@ -24,7 +24,7 @@ function UploadPage() {
 
     // NFT info
     const [isVisible, setIsVisible] = useState(false)
-    const [minterAddress, setMinterAddress] = useState("")
+    const [moralisApiResult,setmoralisApiResult] = useState({})
 
     const onUploadfile = async (event) => {
         event.preventDefault()
@@ -64,7 +64,6 @@ function UploadPage() {
         const platform = accounts["scroll"][1]
         const advertiser = accounts["scroll"][2]
         const user1_address = accounts["scroll"][3]
-        setMinterAddress(user1_address)
         const user2_address = accounts["scroll"][4]
         const user3_address = accounts["scroll"][5]
         console.log("platform", platform)
@@ -79,6 +78,27 @@ function UploadPage() {
 
         const tx1 = await videoNFT.uploadVideo(tokenUri, account)
         await tx1.wait(1)
+
+        const tokenid = Number(await videoNFT.getTokenCounter())-1;
+        console.log("tokenid", tokenid)
+
+        setmoralisApiResult({
+                amount: '1',
+                // block_number: '15957801',
+                // block_number_minted: '12346998',
+                contract_type: 'ERC721',
+                // last_metadata_sync: '2022-10-04T14:50:00.573Z',
+                // last_token_uri_sync: '2022-10-04T14:49:59.308Z',
+                metadata: '{"image":"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
+                minter_address: wallet_admin,
+                name: 'VideoNFT',
+                owner_of: account,
+                symbol: 'VNFT',
+                token_address: tx1.to,
+                token_hash: tx1.hash,
+                token_id: tokenid ,
+                token_uri: 'https://ipfs.moralis.io:2053/ipfs/bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json',
+        })
 
         dispatch({
             type: "success",
@@ -116,8 +136,35 @@ function UploadPage() {
                         {
                             content:
                                 <div className="flex justify-center items-center w-full h-96 border border-gray-300 border-1 border-dotted rounded-lg">
+                                    <div className="mb-4 ml-5">
+                                        {/* <label htmlFor="title" className="font-normal text-2xl">
+                                            视频标题
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="title"
+                                            name="title"
+                                            value={videoTitle}
+                                            onChange={(e) => setVideoTitle(e.target.value)}
+                                            className="border rounded p-2 ml-2 w-60 h-10"
+                                        /> */}
+                                        <Input
+                                            label="视频标题"
+                                            name="Test text Input"
+                                            value={videoTitle}
+                                            onBlur={function noRefCheck() { }}
+                                            onChange={(e) => setVideoTitle(e.target.value)}
+                                        />
+                                    </div>
+
+                                </div>,
+                        },
+                        {
+                            content:
+                                <div className="flex justify-center items-center w-full h-96 border border-gray-300 border-1 border-dotted rounded-lg">
                                     <form onSubmit={onUploadfile} encType="multipart/form-data">
-                                        <div className="mb-4 ml-5">
+                                        {/* <div className="mb-4 ml-5">
                                             <label htmlFor="title" className="font-normal text-2xl">
                                                 视频标题
                                             </label>
@@ -129,7 +176,7 @@ function UploadPage() {
                                                 onChange={(e) => setVideoTitle(e.target.value)}
                                                 className="border rounded p-2 ml-2 w-1/3 h-10"
                                             />
-                                        </div>
+                                        </div> */}
                                         <div className="mt-10 mb-4 ml-24">
                                             <label htmlFor="video" className="font-normal text-2xl ">
                                                 上传视频
@@ -142,8 +189,7 @@ function UploadPage() {
                                             />
                                             <button
                                                 type="submit"
-                                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5"
-                                            >
+                                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-5">
                                                 上传视频
                                             </button>
                                         </div>
@@ -171,6 +217,16 @@ function UploadPage() {
                                             >
                                                 上传封面
                                             </button>
+
+                                            {/* <Upload
+                                                id="cover"
+                                                name="image"
+                                                acceptedFiles="image/*"
+                                                descriptionText="请选择视频封面"
+                                                onChange={(e)=>onUploadimg(e.target)}
+                                                type="file"
+                                                theme="withIcon"
+                                            /> */}
                                         </div>
                                     </form>
                                 </div>,
@@ -183,23 +239,7 @@ function UploadPage() {
             <Modal width="50%" isVisible={isVisible}>
                 <NftCard
                     chain="Scroll Sepolia"
-                    moralisApiResult={{
-                        amount: '1',
-                        block_number: '15957801',
-                        block_number_minted: '12346998',
-                        contract_type: 'ERC721',
-                        last_metadata_sync: '2022-10-04T14:50:00.573Z',
-                        last_token_uri_sync: '2022-10-04T14:49:59.308Z',
-                        metadata: '{"image":"ipfs://bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4","attributes":[{"trait_type":"Background","value":"Aquamarine"},{"trait_type":"Fur","value":"Pink"},{"trait_type":"Eyes","value":"3d"},{"trait_type":"Mouth","value":"Bored"},{"trait_type":"Clothes","value":"Service"}]}',
-                        minter_address: { minterAddress },
-                        name: 'BoredApeYachtClub',
-                        owner_of: '0x6682f185d982bd341a0e1dfccbc2562e3cb1eea7',
-                        symbol: 'BAYC',
-                        token_address: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
-                        token_hash: '61554743720b60143f35e7adcc2a6fc7',
-                        token_id: '4789',
-                        token_uri: 'https://ipfs.moralis.io:2053/ipfs/bafybeig37ioir76s7mg5oobetncojcm3c3hxasyd4rvid4jqhy4gkaheg4/?filename=0-PUG.json',
-                    }}
+                    moralisApiResult={moralisApiResult}
                     customize={{
                         // backgroundColor: '#F0F8FF',
                         border: '2px solid black',
