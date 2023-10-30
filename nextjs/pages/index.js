@@ -80,11 +80,6 @@ export default function HomePage({ videos }) {
                         <Link href={`/tx/tx`} className="font-bold text-gray-50">
                             <button className="w-24 h-10 hover-underline text-xl">查询余额</button>
                         </Link>
-                        <Link href={`/tx/tx`} className="font-bold text-gray-50 ml-10">
-                            <button className="w-24 h-10  hover-underline text-xl">
-                                查询余额
-                            </button>
-                        </Link>
                         <Link href={`/swap`} className="font-bold text-gray-50 ml-10">
                             <button className="w-24 h-10 hover-underline text-xl">swap</button>
                         </Link>
