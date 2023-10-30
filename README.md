@@ -1,10 +1,10 @@
 # Frame-flow
 
-**1 项目名称**: frame-flow 
+**1 项目名称**: frame-flow
 
 **2 项目图片**:
 
-![img-001](img/Decentralized-Video-revenue-Distribution/img001.png)
+![img-001](img/frame-flow/img001.png)
 
 **3 简介**:
 
@@ -31,27 +31,3 @@
     VideoNFT: 0x496881dB83f4a40EFdA68e1E63778522e2aD6De6
 
     TokenMarketplace: 0x0b2f43E4Dc598685Bce8b8f98457314A2033aEE8
-
-2.  Manta Testnet:
-
-    VIDToken: 0xdB39b51F8Aea548C380F2543b0B58c36fbce2bc5
-
-    VideoNFT: 0x2Bf88fF1Ee5b9Ae62874268186743269D6E0C3A2
-
-    TokenMarketplace: 0xcf861417f0Eb69C236b5Fe1a5Ef0de71E97f01b7
-
-3.  Polygon zkEVM Testnet:
-
-    VIDToken: 0x35E6adA7Ea667d4C9f15dba4df8b726ACF0b2937
-
-    VideoNFT: 0x28dB31DD07Efd5c56f646a8C604C77Bb76b14757
-
-    TokenMarketplace: 0x2b2Cb04c1C25c2F20a5D385b1134CB3464293d37
-
-4.  Polygon Testnet Mumbai:
-
-    VIDToken: 0x35E6adA7Ea667d4C9f15dba4df8b726ACF0b2937
-
-    VideoNFT: 0x28dB31DD07Efd5c56f646a8C604C77Bb76b14757
-
-    TokenMarketplace: 0x2b2Cb04c1C25c2F20a5D385b1134CB3464293d37
